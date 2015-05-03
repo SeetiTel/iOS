@@ -26,10 +26,11 @@ UIImage *whistleImage;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.cameraButton setBackgroundImage:[UIImage imageNamed:@"camera90.png"] forState:UIControlStateNormal];
-
-    
-    [self.view setBackgroundColor:[UIColor redColor]];
+//    [self.cameraButton setBackgroundImage:[UIImage imageNamed:@"camera90-3.png"] forState:UIControlStateNormal];
+//
+//    [self.listButton setBackgroundImage:[UIImage imageNamed:@"list-1.png"] forState:UIControlStateNormal];
+//    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
 
 }
 
@@ -53,7 +54,8 @@ UIImage *whistleImage;
     
     post.whistleImage = whistleImage;
     post.type = whistleType;
-    [self performSegueWithIdentifier:@"slidingToNewPost" sender:self];
+    
+    
     
     
     

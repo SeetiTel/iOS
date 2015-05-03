@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *whistleCollectionView;
 
+- (IBAction)reloadButtonPressed:(id)sender;
 
 
 @end

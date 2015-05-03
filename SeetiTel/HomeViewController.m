@@ -51,8 +51,9 @@ NSMutableArray *recentPosts;
     
     
     
-    [self.view setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:176.0/255.0 blue:104.0/255.0 alpha:1]];
+  //  [self.view setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:176.0/255.0 blue:104.0/255.0 alpha:1]];
     
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     
    // self.whistleCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(100, 100, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 50)];
@@ -118,6 +119,7 @@ NSMutableArray *recentPosts;
 {
     UICollectionViewCell *cell = [self.whistleCollectionView cellForItemAtIndexPath:indexPath];
     
+    
       //  [cell setBackgroundColor:[UIColor greenColor]];
     
    
@@ -143,7 +145,9 @@ NSMutableArray *recentPosts;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 4;
+    //return [recentPosts count];
+    
+    return 6;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -165,26 +169,46 @@ NSMutableArray *recentPosts;
     }
     
    // [cell setBackgroundColor:[UIColor colorWithRed:103.0/255.0 green:116.0/255.0 blue:255.0/255.0 alpha:1]];
-    [cell setBackgroundColor:[UIColor colorWithRed:64.0/255.0 green:71.0/255.0 blue:153.0/255.0 alpha:1]];
+    //[cell setBackgroundColor:[UIColor colorWithRed:64.0/255.0 green:71.0/255.0 blue:153.0/255.0 alpha:1]];
+    
+    
+    for (UILabel *lbl in cell.contentView.subviews)
+    {
+        if ([lbl isKindOfClass:[UILabel class]])
+        {
+            [lbl removeFromSuperview];
+        }
+    }
+    
+    [cell setBackgroundColor:[UIColor blackColor]];
     
   //  NSDictionary *dic = [[NSDictionary alloc] initWithObjects:recentPosts forKeys:[NSArray arrayWithObjects:@"teaser", @"id", @"created", @"type", nil]];
     
     NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:[recentPosts objectAtIndex:indexPath.row]];
     
-    if ([dic objectForKey:@"type"] == 0)
-    {
-        UITextView *descriptionView = [[UITextView alloc] initWithFrame:CGRectMake(15, 30, 240, 340)];
-        [descriptionView setTextColor:[UIColor whiteColor]];
-        [descriptionView setBackgroundColor:[UIColor clearColor]];
-        [cell addSubview:descriptionView];
-        [descriptionView setText:[dic objectForKey:@"teaser"]];
+   // if ([[dic objectForKey:@"type"] integerValue] == 0)
+   // {
+        cell.descriptionView = [[UITextView alloc] initWithFrame:CGRectMake(15, 30, 240, 500)];
+        [cell.descriptionView setTextColor:[UIColor whiteColor]];
+        [cell.descriptionView setBackgroundColor:[UIColor clearColor]];
+        cell.descriptionView.font = [UIFont boldSystemFontOfSize:25.0f];
+         
+         [cell.descriptionView setText:[dic objectForKey:@"teaser"]];
+    
+    [cell addSubview:cell.descriptionView];
 
-        
-    }
+    
+   // }
+    
+//    else if ([[dic objectForKey:@"type"] integerValue] == 1)
+//    {
+//        UIImageView *whistleView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 30, 240, 340)];
+//        [whistleView setImage:[dic objectForKey:@"content"]];
+//        [cell addSubview:whistleView];
+//    }
  
    // NSLog(@"@%@", [dic objectForKey:@"created"]) ;
    // [cell.teaserLabel setText:@"Hallo"];
-    [cell.teaserLabel setTextColor:[UIColor whiteColor]];
     
     return cell;
 }
@@ -200,4 +224,25 @@ NSMutableArray *recentPosts;
 }
 */
 
+- (IBAction)reloadButtonPressed:(id)sender {
+    
+    NSURL *requestURL = [NSURL URLWithString:@"http://168.235.152.38:8080/api/v1/whistles/0"];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        
+        NSError *error = nil;
+        
+        //NSJSONReadingMutableContainers - Returns an Array of JSON objects
+        
+        
+        NSMutableArray *newArray = [NSJSONSerialization JSONObjectWithData: data options:NSJSONReadingMutableContainers error:nil];
+
+        
+    [self.whistleCollectionView reloadData];
+    }];
+}
+     
 @end

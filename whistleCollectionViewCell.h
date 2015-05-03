@@ -11,4 +11,8 @@
 @interface whistleCollectionViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *teaserLabel;
 
+@property (strong, nonatomic) UITextView *descriptionView;
+
+@property (strong, nonatomic) UIImageView *whistleView;
+
 @end
