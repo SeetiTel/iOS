@@ -10,5 +10,6 @@
 
 @interface NewWhistleViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *whistleTableView;
-
+@property (strong, nonatomic) IBOutlet UIButton *refreshButton;
+- (void)refreshUI;
 @end

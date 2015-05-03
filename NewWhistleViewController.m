@@ -8,13 +8,16 @@
 
 #import "NewWhistleViewController.h"
 #import "DetailsViewController.h"
+#import "ImageDescriptionViewController.h"
 
 NSMutableArray *recentPosts;
 NSString *selectedString;
 
+NSString *stringy;
+
 
 @interface NewWhistleViewController ()
-
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation NewWhistleViewController
@@ -22,7 +25,8 @@ NSString *selectedString;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self.refreshButton setImage:[UIImage imageNamed:@"update22"] forState:UIControlStateNormal];
+    [[self.refreshButton imageView] setContentMode:UIViewContentModeScaleAspectFit];
     
     NSURL *requestURL = [NSURL URLWithString:@"http://168.235.152.38:8080/api/v1/whistles/0"];
     
@@ -45,9 +49,39 @@ NSString *selectedString;
         [self.whistleTableView reloadData];
         
     }];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl setBackgroundColor:[UIColor lightGrayColor]];
+    [self.refreshControl setTintColor:[UIColor whiteColor]];
+    [self.refreshControl addTarget:self action:@selector(refreshUI) forControlEvents:UIControlEventValueChanged];
+    [self.whistleTableView addSubview:self.refreshControl];
+
+
+}
+
+- (void)refreshUI{
+    NSURL *requestURL = [NSURL URLWithString:@"http://168.235.152.38:8080/api/v1/whistles/0"];
     
-
-
+    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        
+        NSError *error = nil;
+        
+        //NSJSONReadingMutableContainers - Returns an Array of JSON objects
+        
+        
+        NSMutableArray *newArray = [NSJSONSerialization JSONObjectWithData: data options:NSJSONReadingMutableContainers error:nil];
+        
+        if (!recentPosts)
+        {
+            recentPosts = [[NSMutableArray alloc] initWithArray:newArray];
+        }
+        [self.whistleTableView reloadData];
+        
+    }];
+    [self.whistleTableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,13 +118,16 @@ NSString *selectedString;
     
     [cell.textLabel setText:[dic objectForKey:@"teaser"]];
     
-    if ([[dic objectForKey:@"type"] intValue] == 1)
+    if ([[dic objectForKey:@"type"] intValue] == 0)
+    {
+        [cell.imageView setImage:[UIImage imageNamed:@"text70.png"]];
+
+    }
+
+    else if ([[dic objectForKey:@"type"] intValue] == 2)
     {
         [cell.imageView setImage:[UIImage imageNamed:@"image2.png"]];
     }
-
-    else
-        [cell.imageView setImage:[UIImage imageNamed:@"text70.png"]];
     
     return cell;
 }
@@ -104,40 +141,48 @@ NSString *selectedString;
     selectedString = [dic objectForKey:@"teaser"];
     
     
-    
-    NSString *stringy = @"http://168.235.152.38:8080/api/v1/whistles/";
-    NSString *idString = [idLong stringValue];
-    stringy = [stringy stringByAppendingString:idString];
+    if ([[dic objectForKey:@"type"] integerValue] == 0)
+        [self performSegueWithIdentifier:@"slidingToDetails" sender:self];
     
     
-    NSURL *requestURL = [NSURL URLWithString:stringy];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    else if ([[dic objectForKey:@"type"] integerValue] == 2)
+    {
         
+        NSString *idString = [[dic objectForKey:@"id"] stringValue];
+        NSString *requestString = @"http://168.235.152.38:8080/api/v1/whistle/";
+        requestString = [requestString stringByAppendingString:idString];
+        NSURL *requestURL = [NSURL URLWithString:requestString];
         
-        NSArray *selected = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
         
-        
-        
-        
-        
-        
-        
-        //NSJSONReadingMutableContainers - Returns an Array of JSON objects
-        
-        
-    //    NSMutableArray *newArray = [[NSJSONSerialization JSONObjectWithData: data options:NSJSONReadingMutableContainers error:nil];
-        
-        
-    }];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            
+            
+            NSError *error = nil;
+            
+            //NSJSONReadingMutableContainers - Returns an Array of JSON objects
+            
+            
+            NSDictionary *newArray = [NSJSONSerialization JSONObjectWithData: data options:NSJSONReadingMutableContainers error:nil];
+            
+            //NSDictionary *dicky = [newArray objectAtIndex:2];
+            
+            NSString *endString = [newArray objectForKey:@"content"];
+            
 
-    [self performSegueWithIdentifier:@"slidingToDetails" sender:self];
+        
+            stringy = @"http://168.235.152.38:8080";
+        
+        stringy = [stringy stringByAppendingString:endString];
+        
+        
+        [self performSegueWithIdentifier:@"slidingToImagePost" sender:self];
+
+        }];
+    }
+    
 
 }
-
-
 
 #pragma mark - Navigation
 
@@ -146,9 +191,18 @@ NSString *selectedString;
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    DetailsViewController *detail = [segue destinationViewController];
-    detail.teaserString = selectedString;
-}
+    if ([segue.identifier isEqualToString:@"slidingToDetails"]) {
+        
+            DetailsViewController *detail = [segue destinationViewController];
+            detail.teaserString = selectedString;
+    }
+    else if ([segue.identifier isEqualToString:@"slidingToImagePost"]) {
 
+        
+        ImageDescriptionViewController *description = [segue destinationViewController];
+        description.urlString = stringy;
+    
+    }
+}
 
 @end

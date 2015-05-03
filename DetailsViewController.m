@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view.
     
     [self.descriptionLabel setText:self.teaserString];
+
+
 }
 
 - (void)didReceiveMemoryWarning {

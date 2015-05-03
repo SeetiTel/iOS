@@ -18,7 +18,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.descriptionImageView setImage:self.descriptionImage];
+    
+    
+    [self.descriptionWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
+    
+    
     
 }
 

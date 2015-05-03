@@ -11,6 +11,9 @@
 @interface ImageDescriptionViewController : ViewController
 @property (strong, nonatomic) IBOutlet UIImageView *descriptionImageView;
 
+@property NSString *urlString;
+
+@property (strong, nonatomic) IBOutlet UIWebView *descriptionWebView;
 
 @property(strong, nonatomic) UIImage *descriptionImage;
 

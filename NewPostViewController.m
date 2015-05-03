@@ -44,8 +44,8 @@
 
     
     
-
-
+    self.whistleTextView.layer.borderWidth = 0.5f;
+    [self.whistleTextView.layer setBorderColor:[[UIColor blackColor] CGColor]];
 }
 
 - (void)didReceiveMemoryWarning {
