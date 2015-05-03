@@ -18,7 +18,7 @@
 
 @property(strong, nonatomic) UIImageView *whistleView;
 @property(strong, nonatomic) UIImage *whistleImage;
-@property(strong, nonatomic) UITextView *whistleTextView;
 - (IBAction)postButtonPressed:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextView *whistleTextView;
 
 @end

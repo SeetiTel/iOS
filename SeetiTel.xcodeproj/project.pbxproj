@@ -14,6 +14,12 @@
 		3F2202F01AF5F8C2002FE743 /* camera90.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F2202EF1AF5F8C2002FE743 /* camera90.png */; };
 		3F25F48B1AF6A78300868E9C /* list-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F25F48A1AF6A78300868E9C /* list-1.png */; };
 		3F25F48D1AF6A7A300868E9C /* camera90-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F25F48C1AF6A7A300868E9C /* camera90-3.png */; };
+		3F25F48F1AF6AC7200868E9C /* update22.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F25F48E1AF6AC7200868E9C /* update22.png */; };
+		3F25F4981AF6AD9200868E9C /* NewWhistleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F25F4971AF6AD9200868E9C /* NewWhistleViewController.m */; };
+		3F25F49B1AF6AF7B00868E9C /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F25F4991AF6AF7B00868E9C /* image2.png */; };
+		3F25F49C1AF6AF7B00868E9C /* text70.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F25F49A1AF6AF7B00868E9C /* text70.png */; };
+		3F25F49F1AF6B5DA00868E9C /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F25F49E1AF6B5DA00868E9C /* DetailsViewController.m */; };
+		3F25F4A21AF6BE2300868E9C /* ImageDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F25F4A11AF6BE2300868E9C /* ImageDescriptionViewController.m */; };
 		3F4BF72E1AF58D4E00D27FCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4BF72D1AF58D4E00D27FCE /* main.m */; };
 		3F4BF7311AF58D4E00D27FCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4BF7301AF58D4E00D27FCE /* AppDelegate.m */; };
 		3F4BF7341AF58D4E00D27FCE /* SeetiTel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F4BF7321AF58D4E00D27FCE /* SeetiTel.xcdatamodeld */; };
@@ -50,6 +56,15 @@
 		3F2202EF1AF5F8C2002FE743 /* camera90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera90.png; sourceTree = "<group>"; };
 		3F25F48A1AF6A78300868E9C /* list-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-1.png"; sourceTree = "<group>"; };
 		3F25F48C1AF6A7A300868E9C /* camera90-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera90-3.png"; sourceTree = "<group>"; };
+		3F25F48E1AF6AC7200868E9C /* update22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = update22.png; sourceTree = "<group>"; };
+		3F25F4961AF6AD9200868E9C /* NewWhistleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWhistleViewController.h; sourceTree = "<group>"; };
+		3F25F4971AF6AD9200868E9C /* NewWhistleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWhistleViewController.m; sourceTree = "<group>"; };
+		3F25F4991AF6AF7B00868E9C /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image2.png; sourceTree = "<group>"; };
+		3F25F49A1AF6AF7B00868E9C /* text70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text70.png; sourceTree = "<group>"; };
+		3F25F49D1AF6B5DA00868E9C /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		3F25F49E1AF6B5DA00868E9C /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		3F25F4A01AF6BE2300868E9C /* ImageDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDescriptionViewController.h; sourceTree = "<group>"; };
+		3F25F4A11AF6BE2300868E9C /* ImageDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDescriptionViewController.m; sourceTree = "<group>"; };
 		3F4BF7281AF58D4E00D27FCE /* SeetiTel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeetiTel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4BF72C1AF58D4E00D27FCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F4BF72D1AF58D4E00D27FCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +108,9 @@
 		3F2202EE1AF5F8B9002FE743 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3F25F4991AF6AF7B00868E9C /* image2.png */,
+				3F25F49A1AF6AF7B00868E9C /* text70.png */,
+				3F25F48E1AF6AC7200868E9C /* update22.png */,
 				3F25F48A1AF6A78300868E9C /* list-1.png */,
 				3F25F48C1AF6A7A300868E9C /* camera90-3.png */,
 				3F2202EF1AF5F8C2002FE743 /* camera90.png */,
@@ -103,6 +121,12 @@
 		3F4BF71F1AF58D4E00D27FCE = {
 			isa = PBXGroup;
 			children = (
+				3F25F4A01AF6BE2300868E9C /* ImageDescriptionViewController.h */,
+				3F25F4A11AF6BE2300868E9C /* ImageDescriptionViewController.m */,
+				3F25F49D1AF6B5DA00868E9C /* DetailsViewController.h */,
+				3F25F49E1AF6B5DA00868E9C /* DetailsViewController.m */,
+				3F25F4961AF6AD9200868E9C /* NewWhistleViewController.h */,
+				3F25F4971AF6AD9200868E9C /* NewWhistleViewController.m */,
 				3F2202EE1AF5F8B9002FE743 /* Images */,
 				3F2202E91AF5DDE0002FE743 /* WhistleInfoViewController.h */,
 				3F2202EA1AF5DDE0002FE743 /* WhistleInfoViewController.m */,
@@ -256,10 +280,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F25F48B1AF6A78300868E9C /* list-1.png in Resources */,
+				3F25F48F1AF6AC7200868E9C /* update22.png in Resources */,
+				3F25F49C1AF6AF7B00868E9C /* text70.png in Resources */,
 				3F2202F01AF5F8C2002FE743 /* camera90.png in Resources */,
 				3F4BF73A1AF58D4E00D27FCE /* Main.storyboard in Resources */,
 				3F25F48D1AF6A7A300868E9C /* camera90-3.png in Resources */,
 				3F4BF73F1AF58D4E00D27FCE /* LaunchScreen.xib in Resources */,
+				3F25F49B1AF6AF7B00868E9C /* image2.png in Resources */,
 				3F4BF75D1AF5A88300D27FCE /* whistleCollectionViewCell.xib in Resources */,
 				3F4BF73C1AF58D4E00D27FCE /* Images.xcassets in Resources */,
 				3F4BF7581AF58F5D00D27FCE /* HomeViewController.xib in Resources */,
@@ -282,6 +309,8 @@
 			files = (
 				3F4BF7341AF58D4E00D27FCE /* SeetiTel.xcdatamodeld in Sources */,
 				3F2202E21AF5CD44002FE743 /* NewPostViewController.m in Sources */,
+				3F25F4981AF6AD9200868E9C /* NewWhistleViewController.m in Sources */,
+				3F25F49F1AF6B5DA00868E9C /* DetailsViewController.m in Sources */,
 				3F4BF7311AF58D4E00D27FCE /* AppDelegate.m in Sources */,
 				3F4BF7371AF58D4E00D27FCE /* ViewController.m in Sources */,
 				3F2202E71AF5D5AC002FE743 /* SearchViewController.m in Sources */,
@@ -290,6 +319,7 @@
 				3F2202EC1AF5DDE0002FE743 /* WhistleInfoViewController.m in Sources */,
 				3F4BF7571AF58F5D00D27FCE /* HomeViewController.m in Sources */,
 				3F4BF72E1AF58D4E00D27FCE /* main.m in Sources */,
+				3F25F4A21AF6BE2300868E9C /* ImageDescriptionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

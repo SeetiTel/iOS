@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "whistleCollectionViewCell.h"
 
-NSMutableArray *recentPosts;
+NSMutableArray *recentPosts1;
 
 
 
@@ -80,9 +80,9 @@ NSMutableArray *recentPosts;
         
         NSMutableArray *newArray = [NSJSONSerialization JSONObjectWithData: data options:NSJSONReadingMutableContainers error:nil];
         
-        if (!recentPosts)
+        if (!recentPosts1)
         {
-            recentPosts = [[NSMutableArray alloc] initWithArray:newArray];
+            recentPosts1 = [[NSMutableArray alloc] initWithArray:newArray];
         }
         [self.whistleCollectionView reloadData];
         
@@ -96,7 +96,7 @@ NSMutableArray *recentPosts;
 
     
     
-    NSLog(@"@%@", recentPosts);
+    NSLog(@"@%@", recentPosts1);
     
     
 }
@@ -184,7 +184,7 @@ NSMutableArray *recentPosts;
     
   //  NSDictionary *dic = [[NSDictionary alloc] initWithObjects:recentPosts forKeys:[NSArray arrayWithObjects:@"teaser", @"id", @"created", @"type", nil]];
     
-    NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:[recentPosts objectAtIndex:indexPath.row]];
+    NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:[recentPosts1 objectAtIndex:indexPath.row]];
     
    // if ([[dic objectForKey:@"type"] integerValue] == 0)
    // {
